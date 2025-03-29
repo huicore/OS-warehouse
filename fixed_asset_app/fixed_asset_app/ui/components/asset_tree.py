@@ -22,7 +22,7 @@ class AssetTree(QTreeWidget):
 
     def _add_item(self, item_data):
         item = QTreeWidgetItem(self)
-        item.setText(0, str(item_data.get('id', len(self._data) + 1))  # Исправлено
+        item.setText(0, str(item_data.get('id', len(self._data) + 1)))  # Закрыты все скобки
         item.setText(1, item_data.get('Наименование', ''))
         item.setText(2, item_data.get('Тип', ''))
         item.setText(3, item_data.get('Дата поступления', ''))

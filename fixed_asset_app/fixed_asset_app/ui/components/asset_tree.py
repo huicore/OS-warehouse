@@ -1,32 +1,41 @@
 from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem
+from PyQt5.QtCore import Qt
 
 class AssetTree(QTreeWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self._init_ui()
-    
+        self.setSortingEnabled(True)
+
     def _init_ui(self):
         self.setColumnCount(8)
-        self.setHeaderLabels([
-            "ID", "Наименование", "Тип", "Модель", "Инв. №", 
-            "Подразделение", "Статус", "Местоположение"
-        ])
-        self.setColumnWidth(0, 60)
-        self.setColumnWidth(1, 250)
-        self.setColumnWidth(2, 150)
-        self.setColumnWidth(3, 180)
-        self.setColumnWidth(4, 120)
-        self.setColumnWidth(5, 200)
-        self.setColumnWidth(6, 120)
-        self.setColumnWidth(7, 150)
+        headers = [
+            "ID", "Наименование", "Тип", "Модель", 
+            "Инв. №", "Подразделение", "Статус", "Местоположение"
+        ]
+        self.setHeaderLabels(headers)
         
-        self.setStyleSheet("""
-            QTreeWidget {
-                background-color: white;
-                alternate-background-color: #f5f5f5;
-            }
-            QTreeWidget::item {
-                height: 35px;
-            }
-        """)
+        # Настройка стилей
         self.setAlternatingRowColors(True)
+        self.setStyleSheet("""
+            QTreeWidget::item { padding: 5px; }
+            QTreeWidget::item:hover { background: #e0e0e0; }
+        """)
+
+    def load_data(self, data):
+        """Оптимизированная загрузка данных"""
+        self.clear()
+        items = []
+        for row in data:
+            item = QTreeWidgetItem([
+                str(row.get('ID', '')),
+                str(row.get('Наименование', '')),
+                str(row.get('Тип', '')),
+                str(row.get('Модель', '')),
+                str(row.get('Инв. №', '')),
+                str(row.get('Подразделение', '')),
+                str(row.get('Статус', 'Активен')),
+                str(row.get('Местоположение', ''))
+            ])
+            items.append(item)
+        self.addTopLevelItems(items)  # Пакетное добавление

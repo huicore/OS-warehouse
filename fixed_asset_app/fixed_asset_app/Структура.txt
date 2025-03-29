@@ -1,14 +1,10 @@
 fixed_asset_app/
-│── assets/
-│   └── styles/
-│       ├── light.qss
-│       └── dark.qss
-│
-│── ui/
-│   ├── components/
-│   │   ├── __init__.py
-│   │   ├── asset_tree.py
-│   │   └── sidebar.py
-│   └── main_window.py
-│
-└── main.py
+├── main.py
+├── config.py
+├── ui/
+│   ├── __init__.py
+│   ├── main_window.py
+│   └── components/
+│       ├── __init__.py
+│       ├── sidebar.py
+│       └── asset_tree.py

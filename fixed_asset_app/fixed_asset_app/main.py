@@ -4,6 +4,8 @@ from ui.main_window import MainWindow
 
 def main():
     app = QApplication(sys.argv)
+    
+    # Настройка стиля приложения
     app.setStyle('Fusion')
     
     window = MainWindow()

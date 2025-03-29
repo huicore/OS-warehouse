@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from PyQt5.QtWidgets import (QMainWindow, QFileDialog, QMessageBox, 
-                           QTreeWidgetItem, QWidget, QHBoxLayout)
+                           QWidget, QHBoxLayout)
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
 from PyQt5.QtGui import QTextDocument
 from PyQt5.QtCore import QDate
@@ -13,13 +13,12 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Учет основных средств")
         self.setGeometry(100, 100, 1200, 800)
-        self._print_html_cache = None  # Кэш для HTML
+        self._print_html_cache = None
         
         self._init_ui()
         self._connect_signals()
 
     def _init_ui(self):
-        """Инициализация UI с проверкой создания виджетов"""
         try:
             self.sidebar = Sidebar()
             self.asset_tree = AssetTree()
@@ -38,17 +37,17 @@ class MainWindow(QMainWindow):
             raise
 
     def _connect_signals(self):
-        """Подключает сигналы к слотам"""
         try:
-            # Подключаем кнопки из сайдбара к соответствующим методам
-            self.sidebar.import_btn.clicked.connect(self._import_from_excel)
-            self.sidebar.print_btn.clicked.connect(self._show_print_dialog)
-            self.sidebar.preview_btn.clicked.connect(self._show_print_preview)
+            # Подключение через сигналы
+            self.sidebar.import_clicked.connect(self._import_from_excel)
+            self.sidebar.print_clicked.connect(self._show_print_dialog)
+            self.sidebar.preview_clicked.connect(self._show_print_preview)
+            
         except Exception as e:
             QMessageBox.critical(self, "Ошибка подключения сигналов",
                                f"Не удалось подключить сигналы: {str(e)}")
             raise
-
+            
     def _import_from_excel(self):
         """Безопасный импорт с проверкой формата"""
         try:

@@ -1,9 +1,9 @@
+import os
 import pandas as pd
-from openpyxl import load_workbook
 from PyQt5.QtWidgets import (QMainWindow, QFileDialog, QMessageBox, 
-                            QTreeWidgetItem, QWidget, QHBoxLayout)
+                           QTreeWidgetItem, QWidget, QHBoxLayout)
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
-from PyQt5.QtGui import QTextDocument  # QTextDocument теперь из QtGui
+from PyQt5.QtGui import QTextDocument
 from PyQt5.QtCore import QDate
 from ui.components.sidebar import Sidebar
 from ui.components.asset_tree import AssetTree
@@ -13,68 +13,62 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Учет основных средств")
         self.setGeometry(100, 100, 1200, 800)
+        self._print_html_cache = None  # Кэш для HTML
         
-        # Инициализируем компоненты интерфейса
         self._init_ui()
-        
-        # Подключаем сигналы после создания всех компонентов
         self._connect_signals()
 
     def _init_ui(self):
-        """Инициализация пользовательского интерфейса"""
-        # Создаем боковую панель
-        self.sidebar = Sidebar()
-        
-        # Создаем таблицу активов
-        self.asset_tree = AssetTree()
-        
-        # Настройка главного окна
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        
-        main_layout = QHBoxLayout(central_widget)
-        main_layout.setContentsMargins(0, 0, 0, 0)
-        main_layout.setSpacing(0)
-        
-        main_layout.addWidget(self.sidebar)
-        main_layout.addWidget(self.asset_tree)
-
-    def _connect_signals(self):
-        """Подключение сигналов к слотам"""
-        self.sidebar.import_excel_clicked.connect(self._import_from_excel)
-        self.sidebar.print_clicked.connect(self._show_print_dialog)
+        """Инициализация UI с проверкой создания виджетов"""
+        try:
+            self.sidebar = Sidebar()
+            self.asset_tree = AssetTree()
+            
+            central_widget = QWidget()
+            self.setCentralWidget(central_widget)
+            
+            main_layout = QHBoxLayout(central_widget)
+            main_layout.setContentsMargins(0, 0, 0, 0)
+            main_layout.addWidget(self.sidebar)
+            main_layout.addWidget(self.asset_tree)
+            
+        except Exception as e:
+            QMessageBox.critical(None, "Ошибка инициализации", 
+                               f"Не удалось создать интерфейс: {str(e)}")
+            raise
 
     def _import_from_excel(self):
-        """Импорт данных из Excel"""
+        """Безопасный импорт с проверкой формата"""
         try:
             file_path, _ = QFileDialog.getOpenFileName(
                 self, "Выберите файл Excel", "", 
-                "Excel Files (*.xlsx *.xls)"
+                "Excel Files (*.xlsx *.xls);;All Files (*)"
             )
             
-            if file_path:
-                df = pd.read_excel(file_path)
-                self.asset_tree.clear()
+            if not file_path:
+                return
                 
-                for _, row in df.iterrows():
-                    item = QTreeWidgetItem([
-                        str(row.get('ID', '')),
-                        str(row.get('Наименование', '')),
-                        str(row.get('Тип', '')),
-                        str(row.get('Модель', '')),
-                        str(row.get('Инв. №', '')),
-                        str(row.get('Подразделение', '')),
-                        str(row.get('Статус', 'Активен')),
-                        str(row.get('Местоположение', ''))
-                    ])
-                    self.asset_tree.addTopLevelItem(item)
+            if not os.path.exists(file_path):
+                raise FileNotFoundError("Файл не найден")
                 
-                QMessageBox.information(self, "Успех", 
-                    f"Импортировано {len(df)} записей из Excel")
-                
+            if not file_path.lower().endswith(('.xlsx', '.xls')):
+                raise ValueError("Поддерживаются только файлы .xlsx и .xls")
+            
+            # Чтение с проверкой колонок
+            df = pd.read_excel(file_path)
+            required_columns = {'Наименование', 'Тип', 'Инв. №'}
+            if not required_columns.issubset(df.columns):
+                missing = required_columns - set(df.columns)
+                raise ValueError(f"Отсутствуют колонки: {', '.join(missing)}")
+            
+            # Кэширование данных
+            self._print_html_cache = None
+            self.asset_tree.load_data(df.to_dict('records'))
+            
         except Exception as e:
-            QMessageBox.critical(self, "Ошибка", 
-                f"Не удалось импортировать данные: {str(e)}")
+            QMessageBox.critical(self, "Ошибка импорта", 
+                               f"Ошибка: {str(e)}\n\nПодробности в логах")
+            print(f"Import error: {str(e)}")
 
     def _show_print_dialog(self):
         """Показывает диалог печати"""

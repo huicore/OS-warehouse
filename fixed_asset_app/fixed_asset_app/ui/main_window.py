@@ -21,9 +21,6 @@ class MainWindow(QMainWindow):
         self.setGeometry(100, 100, 1200, 800)
         self._print_html_cache = None
         self._current_theme = 'light'
-        
-        self._init_ui()
-        self._connect_signals()
         self._change_theme(self._current_theme)
 
     def _init_ui(self):

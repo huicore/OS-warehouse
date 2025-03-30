@@ -1,0 +1,35 @@
+QMainWindow {
+    background-color: #F5F5F5;
+}
+
+QToolBar {
+    background-color: #E0E0E0;
+    border: none;
+    padding: 5px;
+}
+
+QToolButton {
+    background-color: transparent;
+    color: #333333;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+QToolButton:hover {
+    background-color: #D0D0D0;
+}
+
+QTableView {
+    background-color: #FFFFFF;
+    gridline-color: #E0E0E0;
+    color: #333333;
+    border: 1px solid #CCCCCC;
+}
+
+QHeaderView::section {
+    background-color: #E0E0E0;
+    color: #333333;
+    padding: 5px;
+    border: none;
+}

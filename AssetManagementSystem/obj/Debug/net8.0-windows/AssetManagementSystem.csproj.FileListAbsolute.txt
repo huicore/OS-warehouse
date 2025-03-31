@@ -1,0 +1,9 @@
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\AssetManagementSystem.csproj.AssemblyReference.cache
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\Resources\Styles.baml
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\Views\Pages\AuditLogPage.baml
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\App.baml
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\Views\Pages\AuditLogPage.g.cs
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\AssetManagementSystem_MarkupCompile.cache
+C:\Users\ivashkevichie_a\Documents\PROJECT C OS\AssetManagementSystem\AssetManagementSystem\obj\Debug\net8.0-windows\AssetManagementSystem_MarkupCompile.lref

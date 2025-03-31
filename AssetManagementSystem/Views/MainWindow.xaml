@@ -1,0 +1,23 @@
+﻿<Window x:Class="AssetManagementSystem.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Asset Management System" 
+        Height="600" 
+        Width="800"
+        Background="{DynamicResource BackgroundColor}">
+    
+    <Grid>
+        <!-- Пример использования MaterialDesign элементов -->
+        <Button Content="Material Button"
+                Width="200"
+                Height="40"
+                Margin="20"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Foreground="White"
+                Background="{DynamicResource PrimaryColor}"/>
+    </Grid>
+</Window>

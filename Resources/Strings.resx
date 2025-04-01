@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Общие строки интерфейса -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>Учет основных средств</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="MenuEdit" xml:space="preserve">
+    <value>Правка</value>
+  </data>
+  <data name="MenuView" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+
+  <!-- Сообщения об операциях -->
+  <data name="SaveSuccess" xml:space="preserve">
+    <value>Данные успешно сохранены</value>
+  </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту запись?</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Запись успешно удалена</value>
+  </data>
+
+  <!-- Тексты кнопок -->
+  <data name="BtnAdd" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="BtnEdit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="BtnDelete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="BtnSave" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="BtnCancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="BtnClose" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+
+  <!-- Заголовки столбцов -->
+  <data name="ColumnInventoryNumber" xml:space="preserve">
+    <value>Инв. №</value>
+  </data>
+  <data name="ColumnAssetType" xml:space="preserve">
+    <value>Тип ОС</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="ColumnStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+
+  <!-- Сообщения об ошибках -->
+  <data name="ErrorLoadingData" xml:space="preserve">
+    <value>Ошибка загрузки данных</value>
+  </data>
+  <data name="ErrorSavingData" xml:space="preserve">
+    <value>Ошибка сохранения данных</value>
+  </data>
+  <data name="ValidationRequiredField" xml:space="preserve">
+    <value>Поле обязательно для заполнения</value>
+  </data>
+  <data name="ValidationUniqueInventory" xml:space="preserve">
+    <value>Инвентарный номер должен быть уникальным</value>
+  </data>
+
+  <!-- Статусная строка -->
+  <data name="StatusRecordsCount" xml:space="preserve">
+    <value>Записей: {0}</value>
+  </data>
+  <data name="StatusFilteredCount" xml:space="preserve">
+    <value>Найдено: {0}</value>
+  </data>
+
+  <!-- Диалоговые окна -->
+  <data name="DialogTitleWarning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="DialogTitleError" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="DialogTitleConfirmation" xml:space="preserve">
+    <value>Подтверждение</value>
+  </data>
+</root>
